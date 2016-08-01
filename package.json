@@ -1,0 +1,11 @@
+{
+	"name": "dumbchess-server",
+	"version": "0.1.1",
+	"description": "Try to handle online chess games",
+	"license": "UNLICENSED",
+	"author": "Guillaume Mayer <gm.prog@outlook.com> (http://gm77.alwaysdata.net/cv)",
+	"main": "test.js",
+	"dependencies": {
+		"express": "~4.14.0"
+	}
+}
