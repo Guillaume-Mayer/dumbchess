@@ -11,7 +11,7 @@ function getLegalMoves() {
 			})
 		.sort(
 			function(a, b) {
-				return a.localeCompare(b);
+				return a > b ? 1 : -1;
 			});
 }
 
