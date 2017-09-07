@@ -73,6 +73,6 @@ app.get('/chess/unplay', function (req, res) {
 });
 
 // Start the server
-var port = 8080;
+var port = 3000;
 app.listen(port);
 console.log('Server running at port ' + port);
