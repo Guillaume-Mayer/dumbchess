@@ -96,7 +96,7 @@
         sound : false,
         showLegalMoves : true,
         whiteOnTop : false,
-        // AI options        
+        // AI options
         useQuiescence : false,
         // Game options
         players : [COMPUTER, HUMAN]
@@ -164,10 +164,10 @@
         if (move.castling === KING) return "O-O";
         if (move.castling === QUEEN) return "O-O-O";
         return PIECE_ALG[move.piece] +
-        tileId(move.row1, move.col1) +
-        (move.capture ? "x" : "-") +
-        tileId(move.row2, move.col2) +
-        (move.enPassant ? "ep" : (move.promote ? PIECE_ALG[move.promote] : ""));
+            tileId(move.row1, move.col1) +
+            (move.capture ? "x" : "-") +
+            tileId(move.row2, move.col2) +
+            (move.enPassant ? "ep" : (move.promote ? PIECE_ALG[move.promote] : ""));
     };
 
     // FEN format
@@ -911,7 +911,7 @@
         var dubbled = -50;
         // Isolated pawns malus TODO
         var isolated = -50;
-        // Pawn loop        
+        // Pawn loop
         for (var col = 8; col--;) {
             var colCount = [0, 0];
             for (var row = 1; row < 7; row ++) {
@@ -956,7 +956,7 @@
             castleQueen = 200;
         var canCastleKing  = 100,
             canCastleQueen =  80;
-        // - Color to play       
+        // - Color to play
         if (canCastleKingSide(color) || canCastleQueenSide(color)) {
             // - Give a bonus if castling is still possible
             if (canCastleKingSide( color)) score += canCastleKing;
@@ -970,7 +970,7 @@
                 score += castleQueen;
             }
         }
-        // - Other color      
+        // - Other color
         if (canCastleKingSide(1 - color) || canCastleQueenSide(1 - color)) {
             // - Give a bonus if castling is still possible
             if (canCastleKingSide( 1 - color)) score -= canCastleKing;
@@ -995,7 +995,7 @@
         console.log("Total: " + evaluate());
     }
 
-    /*  
+    /*
     See Negamax with alpha beta pruning
     on https://en.wikipedia.org/wiki/Negamax
     */
@@ -1049,7 +1049,7 @@
         }
     }
 
-    
+
     // Get the best move using iterative deepening
     function iterativeNegaMax() {
         var negaMaxObj, stats, moves;
