@@ -128,6 +128,7 @@
         this.preventsCastleKingSide = 0;
         this.preventsCastleQueenSide = 0;
         this.halfMoveCountWas = -1;
+        this.check = false;
     }
 
     // Assign captured piece and returns instance for chaining purpose
@@ -161,13 +162,14 @@
 
     // Move to string
     function moveToStr(move) {
-        if (move.castling === KING) return "O-O";
-        if (move.castling === QUEEN) return "O-O-O";
+        if (move.castling === KING) return "O-O" + (move.check ? "+" : "");
+        if (move.castling === QUEEN) return "O-O-O" + (move.check ? "+" : "");
         return PIECE_ALG[move.piece] +
             tileId(move.row1, move.col1) +
             (move.capture ? "x" : "-") +
             tileId(move.row2, move.col2) +
-            (move.enPassant ? "ep" : (move.promote ? PIECE_ALG[move.promote] : ""));
+            (move.enPassant ? "ep" : (move.promote ? PIECE_ALG[move.promote] : "")) +
+            (move.check ? "+" : "");
     };
 
     // FEN format
@@ -249,8 +251,16 @@
         for (var m = moves.length; m--;) {
             play(moves[m]);
             var check = isCheck(color);
+            var advCheck = false
+            if (!check) {
+                advCheck = isCheck(1 - color);
+            }
             unplay(moves[m]);
-            if (check) moves.splice(m, 1);
+            if (check) {
+                moves.splice(m, 1);
+            } else {
+                moves[m].check = advCheck;
+            }
         }
         return moves;
     }
