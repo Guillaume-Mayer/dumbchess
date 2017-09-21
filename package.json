@@ -13,6 +13,6 @@
 		"express": "^4.15.4"
 	},
 	"devDependencies": {
-		"eslint": "^4.6.1"
+		"eslint": "^4.7.2"
 	}
 }
