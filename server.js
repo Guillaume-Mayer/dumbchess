@@ -57,7 +57,10 @@ app.get('/chess/play/:move', function(req, res) {
 		}
 	}
 	if (move === undefined) {
-		res.status(403).json({msg: 'Move [' + req.params.move + '] is not legal'});
+		res.status(403).json({
+			msg: 'Move [' + req.params.move + '] is not legal',
+			history: chess.history.map(function(m) {return chess.moveToStr(m);})
+		});
 	} else {
 		chess.play(move);
 		resp(res);
