@@ -1071,7 +1071,7 @@
     }
 
     // Exports
-    module.exports = {
+    var chess = {
         board : pos.board,
         options : options,
         history : history,
@@ -1114,5 +1114,11 @@
         logEval : logEval,  // Debug
         posToFen : posToFen
     };
+
+    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+        module.exports = chess
+    } else {
+        window.chess = chess
+    }
 
 })()
