@@ -56,7 +56,7 @@ app.get('/chess', function(req, res) {
 app.get('/chess/play/:move', function(req, res) {
 	if (chess.history.length > 0) {
 		if (chess.moveToStr(chess.history[chess.history.length - 1]) === req.params.move) {
-			console.log("Move = Last Move ", req.params.move, "(Jersey calls twice sometimes but the rest api is not stateless)")
+			console.log("Move = Last Move ", req.params.move, "(Jersey calls me twice sometimes but the rest api is not stateless)")
 			res.end()
 			return
 		}
