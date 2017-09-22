@@ -1,6 +1,7 @@
 // Modules
-var express = require('express');
-var chess = require('./dumb-chess');
+const express = require('express');
+const chess = require('./dumb-chess');
+const morgan = require('morgan');
 
 // Get legal moves in algebraic notation and sorted
 function getLegalMoves() {
@@ -42,7 +43,10 @@ function resp(res) {
 }
 
 // Express app
-var app = express();
+const app = express();
+
+// Log
+app.use(morgan('tiny'));
 
 // Routes
 app.get('/chess', function(req, res) {
